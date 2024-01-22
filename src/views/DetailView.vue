@@ -42,7 +42,7 @@ onMounted(() => {
           </h1>
           <p class="text-gray-500">{{ item.subtitle }}</p>
           <!-- binding data item ke props di gallery.vue -->
-          <Gallery :thumbnails="item.thumbnails" :galleries="item.galleries"/>
+          <Gallery :defaultImage="item.thumbnails" :galleries="item.galleries"/>
           <section class="" id="orders">
             <h1 class="mt-8 mb-3 text-lg font-semibold">About</h1>
             <!-- jika data ada HTML memakai seperti ini  -->
