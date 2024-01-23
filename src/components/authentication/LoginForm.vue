@@ -1,26 +1,32 @@
 <script setup>
-import { ref } from "vue";
-import { RouterLink } from "vue-router";
-import axios from "axios";
+import { ref } from "vue"
+import { RouterLink, useRouter } from "vue-router"
+import axios from "axios"
+
+import { useUserStore } from "@/stores/user"
+
+const userStore = useUserStore() //nampung data yg di pinia
+const router = useRouter() //buat direct link 
 
 const form = ref({
   email: "",
-  password: "",
-});
+  password: ""
+})
 
 async function login() {
   try {
     const response = await axios.post(
-      "https://zullkit-backend.belajarkoding.com/api/login",
-      {
-        email: form.value.email,
-        password: form.value.password,
-      }
-    );
-    localStorage.setItem("acces_token", response.data.data.access_token);
-    localStorage.setItem("token_type", response.data.data.token_type);
+      "https://zullkit-backend.belajarkoding.com/api/login", {
+      email: form.value.email,
+      password: form.value.password,
+    }
+    )
+    localStorage.setItem('access_token', response.data.data.access_token)
+    localStorage.setItem('token_type', response.data.data.token_type)
 
-    console.log(response.data);
+    userStore.fetchUser(); // manggil data api di pinia user dan mengambil data terupdate
+    router.push('/') // redirect halaman homepages
+
   } catch (error) {
     console.error(error)
   }
