@@ -5,8 +5,8 @@ import axios from "axios"
 
 import { useUserStore } from "@/stores/user"
 
-const userStore = useUserStore()
-const router = useRouter()
+const userStore = useUserStore() //nampung data yg di pinia
+const router = useRouter() //buat direct link 
 
 const form = ref({
   email: "",
@@ -24,8 +24,8 @@ async function login() {
     localStorage.setItem('access_token', response.data.data.access_token)
     localStorage.setItem('token_type', response.data.data.token_type)
 
-    userStore.fetchUser();
-    router.push('/')
+    userStore.fetchUser(); // manggil data api di pinia user dan mengambil data terupdate
+    router.push('/') // redirect halaman homepages
 
   } catch (error) {
     console.error(error)
