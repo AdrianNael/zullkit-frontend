@@ -15,7 +15,7 @@ export const useUserStore = defineStore({
     //mengambil data Api
     async fetchUser() {
       try {
-        const {} = await axios.get(
+        const {data} = await axios.get(
           "https://zullkit-backend.belajarkoding.com/api/user",
           {
             headers: {
