@@ -15,13 +15,13 @@ export const useUserStore = defineStore({
     //mengambil data Api
     async fetchUser() {
       try {
-        const {data} = await axios.get(
+        const { data } = await axios.get(
           "https://zullkit-backend.belajarkoding.com/api/user",
           {
             headers: {
               AuthorizationL:
                 localStorage.getItem("token_type") +
-                "" +
+                '' +
                 localStorage.getItem("access_token"),
             },
             //mengambil token dari lokal storage
