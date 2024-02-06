@@ -10,7 +10,6 @@ async function getItemsData() {
     const response = await axios.get(
       "https://zullkit-backend.belajarkoding.com/api/products"
     );
-    console.log(response.data);
     items.value = response.data.data.data;
   } catch (error) {}
 } //GetData
